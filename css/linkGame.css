@@ -1,0 +1,78 @@
+html{
+    font-size: 10px!important;
+}
+#container{
+    background: lightgreen;
+    border: 1px solid darkcyan;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+#gameBox{
+    height:100%;
+    width:100%;
+    -webkit-transform: translate3d(0,-100%,0);
+    -moz-transform: translate3d(0,-100%,0);
+    -ms-transform: translate3d(0,-100%,0);
+    -o-transform: translate3d(0,-100%,0);
+    transform: translate3d(0,-100%,0);
+}
+.row{
+    display: table;
+}
+.grid{
+    position: relative;
+    float:left;
+    padding: 2px;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: middle;
+    -webkit-box-shadow: 0 0 2px 2px #999;
+    -moz-box-shadow: 0 0 2px 2px #999;
+    box-shadow: 0 0 2px 2px #999;
+}
+.grid:before{
+    content: " \e001";
+    display: block;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 60px;
+    left:0;
+    top:0;
+    position:relative;
+    height: 100%;
+    width: 100%;
+}
+.grid.apple:before{
+    content:"\e001";
+    color: red;
+}
+.grid.cookie:before{
+    content:"\e030";
+}
+.grid.ice-cream:before{
+    content:"\e016";
+}
+.grid.poultry:before{
+    content:"\e008";
+}
+@font-face {
+    font-family: 'tbhfontregular';
+    src: url('../fonts/tbhfont.eot');
+    src: url('../fonts/tbhfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/tbhfont.woff') format('woff'),
+    url('../fonts/tbhfont.ttf') format('truetype'),
+    url('../fonts/tbhfont.svg#tbhfontregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.grid{
+    font-family: "tbhfontregular";
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    color:white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/linkGame.css"/>
+</head>
+<body>
+<div id="linkGame">
+    <div id="controls"><!--
+        <button id="stop">暂停</button>
+        <button id="restart">重新开始</button>
+        <span>得分:<span id="scores"></span></span>-->
+    </div>
+    <div id="container">
+        <div id="gameBox"></div>
+    </div>
+</div>
+</body>
+<script src="js/MooTools-Core-1.5.1.js"></script>
+<script src="js/zepto.js"></script>
+<script src="js/linkGame.js"></script>
+<script>
+    var game,zp=Zepto;
+window.addEvent("domready",function(){
+    //type: canvas div
+    game=new LinkGame($("linkGame"),{
+        type:"div",
+        controls:$("controls"),
+        container:$("container")
+    });
+});
+</script>
+</html>
