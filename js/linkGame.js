@@ -19,6 +19,17 @@ var LinkGame=(function(){
             getGrid:function(id){
                 return this.grids[id];
             },
+            delGrid:function(id){
+               var grid=this.getGrid(id);
+                if(grid){
+                    this.map[grid.row][grid.col]=null;
+                    grid=null;
+                }
+            },
+            initParent:function(row,parent){
+                this.map[row].parentNode = parent;
+                this.map[row].top = 0;
+            },
             updateGrid:function(){
 
             },
@@ -28,6 +39,8 @@ var LinkGame=(function(){
                 this.grids[_id]=grid;
                 zp(grid.node).data("id",_id);
                 this.map[i][j]=grid;
+                //记录列
+
                 return grid;
             },
             getGridName:function(i,j){
@@ -119,7 +132,8 @@ var LinkGame=(function(){
             height:600,
             mFc:"linear",
             mDur:1000,
-            row:0
+            rows:0,
+            cols:0
         },
         initialize:function(element,options) {
             this.setOptions(options);
@@ -127,20 +141,23 @@ var LinkGame=(function(){
             var opts= this.options,
                 fragments=[],
                 row=zp(opts.rowTpl),
-                element=zp(element),self=this,
-                rows=opts.width / opts.gridSize,
-                cols=opts.height / opts.gridSize;
-            this.grids=new Grids(rows,cols);
+                element=zp(element),self=this;
+
+                opts.rows=opts.width / opts.gridSize,
+                opts.cols=opts.height / opts.gridSize;
+
+            this.grids=new Grids(opts.rows,opts.cols);
             this.gameBox=element.find("#gameBox");
             element.css({width: opts.width, height: opts.height});
 
-            for (var i = 0, l = rows; i < l; i++)
-                for (var j = 0, ll = cols; j < ll; j++) {
+            for (var i = 0, l = opts.rows; i < l; i++)
+                for (var j = 0, ll = opts.cols; j < ll; j++) {
                     var grid=this.grids.produceGrid(opts.gridSize,i,j);
                     //new Grid(this,opts.gridSize,i,j);
                     fragments.push(grid.node);
                     if(j==ll-1){
                         this.gameBox.append(row.html(fragments));
+                        this.grids.initParent(i,row);
                         //row.animate({top:opts.height-opts.gridSize*(i+1)},opts.mDur);
                         row=zp(opts.rowTpl);
                         fragments=[];
@@ -152,7 +169,15 @@ var LinkGame=(function(){
             this.gameBox.animate({"translate3d":"0,0%,0"},opts.mDur,opts.mFc);
         },
         checkGrid:function(id){
-            var grid=this.grids.getGrid(id),removeGrids=new Array(),row,col,temp;
+
+            var grid=this.grids.getGrid(id),removeGrids=(function(r,c){
+                var a=[];
+                for(var i= 0;i<r;i++){
+                    a[i]=new Array(c);
+                }
+                return a;
+            })(this.options.rows,this.options.cols),row,col,temp;
+
             if(!grid)
             return false;
             row=grid.row;
@@ -176,19 +201,49 @@ var LinkGame=(function(){
                 removeGrids[row].push(temp.node);
             }
             if(removeGrids.length>0){
-                removeGrids.push(grid.node);
+                removeGrids[grid.row].push(grid.node);
             }
-            //this.updateGrids(removeGrids,"del");
-            zp(removeGrids).remove();
+            this.updateGrids(removeGrids,"del");
+            zp(removeGrids.flatten()).remove();
 
         },
         updateGrids:function(grids,type){
+           var self=this;
            if(type=="del"){
-               grids.each(function(item,index){
-
-
+               grids.each(function(row,index){
+                   var step=0;
+                   row.each(function(item,i){
+                       step++;
+                       this.grids.delGrid(zp(item).data("id"));
+                   });
+                   if(step!=0){
+                       self.moveGrid(index,step);
+                       this.updatePos(row);
+                   }
                })
            }
+        } ,
+        moveGrid:function(index,step){
+            var  top=this.options.gridSize*step,grid,parent;
+            if((grid=this.grids.map[index])&&(parent=grid.parentNode)){
+                grid.top+=top;
+                zp(parent).animate({"translate3d":"0,"+grid.top+"px,0"});
+            }
+
+        },
+        updatePos:function(row){
+            row=row.sort(function(a,b){
+                return   a.row< b.row;
+            });
+            row.each(function(item,i){
+                if(!item){
+                    for(var s=i;i<this.opts.cols;i++){
+                    }
+                }
+            })
+            for(var i= 0,l=row.length;i<l;i++){
+
+            }
         }
 
     });
