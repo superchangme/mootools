@@ -19,10 +19,11 @@ html{
 }
 .row{
     display: table;
+    float: left;
 }
 .grid{
     position: relative;
-    float:left;
+    float:right;
     padding: 2px;
     box-sizing: border-box;
     display: table-cell;
@@ -49,12 +50,15 @@ html{
 }
 .grid.cookie:before{
     content:"\e030";
+    color: saddlebrown;
 }
 .grid.ice-cream:before{
     content:"\e016";
+    color: chartreuse;
 }
 .grid.poultry:before{
     content:"\e008";
+    color: goldenrod;
 }
 @font-face {
     font-family: 'tbhfontregular';
