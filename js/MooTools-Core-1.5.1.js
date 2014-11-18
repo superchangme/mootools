@@ -1209,7 +1209,7 @@ this.Events = new Class({
 	}
 
 });
-
+//options class
 this.Options = new Class({
 
 	setOptions: function(){
@@ -3931,7 +3931,7 @@ Element.Properties.events = {set: function(events){
 	}
 
 });
-
+//onclick
 Element.NativeEvents = {
 	click: 2, dblclick: 2, mouseup: 2, mousedown: 2, contextmenu: 2, //mouse buttons
 	wheel: 2, mousewheel: 2, DOMMouseScroll: 2, //mouse wheel

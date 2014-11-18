@@ -80,6 +80,7 @@ var BySlideMenu = new Class({
             element.setStyles({
                 position: 'absolute',
                 height: elementHeight - offsetHeight,
+
                 width: elementWidth - offsetWidth
             });
             element.setStyle(this.posAttr, closePos);
