@@ -1,0 +1,232 @@
+html{
+  font-size: 10px!important;
+}
+#linkGame{
+  margin: 0 auto;
+  /*
+      border: 1px solid darkcyan;
+  */
+  #container{
+    background: #038cf5;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  #gameBox{
+    height:100%;
+    width:100%;
+    -webkit-transform: translate3d(0,-100%,0);
+    -moz-transform: translate3d(0,-100%,0);
+    -ms-transform: translate3d(0,-100%,0);
+    -o-transform: translate3d(0,-100%,0);
+    transform: translate3d(0,-100%,0);
+  }
+  .row{
+    display: table;
+    float: left;
+    position: relative;
+  }
+  .row div{
+    position: relative;
+  }
+  .grid{
+    position: relative;
+    float:right;
+    padding: 2px;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: middle;
+    -webkit-box-shadow: 1px 1px 1px 1px  lightblue;
+    -moz-box-shadow: 1px 1px 1px 1px  lightblue;
+    box-shadow: 1px 1px 1px 1px  lightblue;
+  }
+  .grid:before{
+    content: " \e001";
+    display: block;
+    text-align: center;
+    font-size: 5rem;
+    line-height: 1;
+    left:0;
+    top:0;
+    position:relative;
+    height: 100%;
+    width: 100%;
+  }
+  .mobile .grid:before{
+  }
+  .grid.apple:before{
+    content:"\e001";
+    color: red;
+  }
+  .grid.cookie:before{
+    content:"\e030";
+    color: saddlebrown;
+  }
+  .grid.ice-cream:before{
+    content:"\e016";
+    color: chartreuse;
+  }
+  .grid.poultry:before{
+    content:"\e008";
+    color: goldenrod;
+  }
+  .grid.other:before{
+    content:"\e009";
+    color: goldenrod;
+  }
+  .grid{
+    font-family: "tbhfontregular";
+    display:inline-block;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    color:white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@font-face {
+  font-family: 'tbhfontregular';
+  src: url('../fonts/tbhfont.eot');
+  src: url('../fonts/tbhfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/tbhfont.woff') format('woff'),
+  url('../fonts/tbhfont.ttf') format('truetype'),
+  url('../fonts/tbhfont.svg#tbhfontregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#addScore{
+  position: absolute;
+  top:50%;
+  left:50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  background: goldenrod;
+  border-radius: 50%;
+  line-height: 50px;
+  font-size: 2rem;
+  text-align: center;
+  display: block;
+  z-index: 100;
+}
+#addScore.animate{
+  display:inline-block;
+  -webkit-animation: updown 1s ease 1;
+  -o-animation: updown 1s ease 1;
+  animation: updown 1s ease 1;
+}
+#gameBox.in{
+  -webkit-animation:comeIn 1s ease forwards;
+  -o-animation:comeIn 1s ease forwards;
+  animation:comeIn 1s ease forwards;
+}
+
+@-webkit-keyframes comeIn {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+}
+
+@-o-keyframes comeIn {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+}
+
+@-moz-keyframes comeIn {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+}
+
+@keyframes comeIn {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+}
+@-webkit-keyframes updown {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    transform: translate3d(0,-50px,0);
+  }
+
+}
+
+@-o-keyframes updown {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    transform: translate3d(0,-50px,0);
+  }
+
+}
+
+@-moz-keyframes updown {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    transform: translate3d(0,-50px,0);
+  }
+
+}
+
+@keyframes updown {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    transform: translate3d(0,-50px,0);
+  }
+
+}
+.hide{
+  display: none!important;
+}
+#controls{
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+#scores{
+  color: #038cf5;
+}
+
+#tetrisGame{
+  #container{
+    background: #038cf5;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  #gameBox{
+    height:100%;
+    width:100%;
+    .grid{
+      box-sizing: border-box;
+      border:1px solid black;
+      float: left;
+    }
+  }
+}

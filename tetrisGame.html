@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/game.css"/>
 </head>
 <body>
-<div id="linkGame">
+<div id="tetrisGame">
     <h1>消消乐</h1>
     <div id="controls">
         <button id="restart">重新开始</button>
@@ -23,17 +23,18 @@
     </div>
 </div>
 </body>
+
 <script src="js/MooTools-Core-1.5.1.js"></script>
-<script src="js/linkGame.js"></script>
+<script src="js/tetrisGame.js"></script>
 <script>
     var game;
-window.addEvent("domready",function(){
-    //type: canvas div
-    game=new LinkGame($("linkGame"),{
-        type:"div",
-        controls:$("controls"),
-        container:$("container")
+    window.addEvent("domready",function(){
+        //type: canvas div
+        game=new TetrisGame($("tetrisGame"),{
+            type:"div",
+            controls:$("controls"),
+            container:$("container")
+        });
     });
-});
 </script>
 </html>
