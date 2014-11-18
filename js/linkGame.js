@@ -6,7 +6,7 @@
         var dom=Document,_width=_height=600,_gridSize=60;
         if(window.navigator.userAgent.toLowerCase().indexOf("mobile")>-1
         &&window.navigator.userAgent.toLowerCase().indexOf("pad")==-1){
-            _width=_height=320;_gridSize=64;
+            _width=_height=300;_gridSize=60;
             $$("body").addClass("mobile");
         }
 

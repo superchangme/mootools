@@ -3,7 +3,9 @@ html{
 }
 #linkGame{
     margin: 0 auto;
+/*
     border: 1px solid darkcyan;
+*/
 }
 #container{
     background: #038cf5;
@@ -200,4 +202,11 @@ html{
 }
 .hide{
     display: none!important;
+}
+#controls{
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+#scores{
+    color: #038cf5;
 }
