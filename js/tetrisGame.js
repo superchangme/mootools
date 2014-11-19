@@ -11,6 +11,10 @@
 * 1
 * 1 1 1 1
 *
+* 1 1  1 1 1 1    1
+* 1          1    1
+* 1               1
+* 1            1  1
 * //shape 3
 *       1
 * 1 1 1 1
@@ -25,7 +29,10 @@
 * //shape 6
 * 1 1
 *   1 1
-*
+*  1
+*  1
+* 1
+* 1
 * */
 (function(zp,w){
     var GridMap=(function(){
@@ -60,7 +67,7 @@
     })();
 
     w.TetrisGame=(function(){
-        var grids=[
+        var gridsArr=[
             [[1,1,1],[1,1,1],[1,1,1]],
             [[1,0,0,0],[1,1,1,1]],
             [[0,0,0,1],[1,1,1,1]],
@@ -75,6 +82,11 @@
                 width:300,
                 height:540,
                 size:30,
+                level:"easy",
+                levelMap:{"easy":100,"middle":75,"hard":50},
+                stepTime:this.levelMap[this.level],
+                step:10,
+                waitTime:150,
                 total:0,
                 highlight:"red",
                 gridTpl:function(){
@@ -94,10 +106,18 @@
                 for(var i= 0,l=rows*cols/(opts.size*opts.size);i<l;i++){
                     this.gameBox.adopt(opts.gridTpl());
                 }
+                this.setLevel();
                 this.start();
             },
+            setLevel:function(level){
+                var level=level||"easy";
+                this.stepTime=this.levelMap[level];
+            },
             start:function(){
-                timer=Fun.delay(5000);
+                timer=alert.periodical();
+            },
+            produceGrid:function(){
+              var grid=gridsArr[Number.random(0,gridsArr.length-1)],row=grid.length;
             },
             pause:function(){
 

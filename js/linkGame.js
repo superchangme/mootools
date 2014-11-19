@@ -354,6 +354,7 @@
                 wrap.set("tween", {
                     duration: step * this.options.mDur,
                     transition: "bounce:out",
+                    link:"cancel",
                     onComplete: function (element) {
                         element.getChildren().inject(element, 'before');
                         element.remove();
