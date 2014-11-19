@@ -90,7 +90,7 @@ html{
   font-family: 'tbhfontregular';
   src: url('../fonts/tbhfont.eot');
   src: url('../fonts/tbhfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/tbhfont.woff') format('woff'),
+  url('../fonts/tbhfont.woff2') format('woff2'),
   url('../fonts/tbhfont.ttf') format('truetype'),
   url('../fonts/tbhfont.svg#tbhfontregular') format('svg');
   font-weight: normal;
@@ -227,6 +227,9 @@ html{
       box-sizing: border-box;
       border:1px solid black;
       float: left;
+      &.on{
+        background: red;
+      }
     }
   }
 }

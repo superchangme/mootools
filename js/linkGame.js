@@ -6,7 +6,7 @@
         var dom=Document,_width=_height=600,_gridSize=60;
         if(window.navigator.userAgent.toLowerCase().indexOf("mobile")>-1
         &&window.navigator.userAgent.toLowerCase().indexOf("pad")==-1){
-            _width=_height=300;_gridSize=60;
+            _width=300;_gridSize=50;_height=400;
             $$("body").addClass("mobile");
         }
 
@@ -144,7 +144,7 @@
                     return (new Element("div")).addClass("add");
                 },
                 mFc:"linear",
-                mDur:550,
+                mDur:250,
                 rows:0,
                 cols:0,
                 onAddScore:function(count){
@@ -353,7 +353,8 @@
                 wrap.setStyle("top",top);
                 wrap.set("tween", {
                     duration: step * this.options.mDur,
-                    transition: "bounce:out",
+                    transition: "Cubic:In:Out",
+                    link:"cancel",
                     onComplete: function (element) {
                         element.getChildren().inject(element, 'before');
                         element.remove();

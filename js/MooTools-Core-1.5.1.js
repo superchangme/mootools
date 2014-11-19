@@ -5189,7 +5189,7 @@ Fx.implement({
 			trans = Fx.Transitions;
 			trans = trans[data[0]] || trans[data[0].capitalize()];
 			if (data[1]) trans = trans['ease' + data[1].capitalize() + (data[2] ? data[2].capitalize() : '')];
-		console.log(trans,data)
+		//console.log(trans,data)
         }
 		return trans;
 	}
